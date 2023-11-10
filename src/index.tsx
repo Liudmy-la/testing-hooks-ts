@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+	document.getElementById('root') as HTMLElement
 );
+
+type ProductContentType = {
+	selectedProductId: number;
+}
+
+export const ProductContext = createContext<ProductContentType | null>(null);
+
 root.render(
   <React.StrictMode>
-    <App />
+	<ProductContext.Provider value={{selectedProductId: 1}}>
+		<App />
+	</ProductContext.Provider>
   </React.StrictMode>
 );
 
